@@ -1,0 +1,21 @@
+﻿archivo_origen,fid,OBJECTID,Identificador,Periodo,Mes,LOCNOMBRE,LOCCODIGO,TamanioEmpresarial,RamaActividadEconomica,CodigoCIIU,OrganizacionJuridica,empresasvigentes,empresasCreadas,EmpresasCanceladas,SexoRL
+dinamicaempresarial2023.gpkg,4985,4985,02202309,2023,9,02,2,Mediana,Comercio,4643,Sociedad Por Acciones Simplificada,2.0,,,
+dinamicaempresarial2023.gpkg,15828,15828,14202309,2023,9,14,14,Sin Información,Servicio,9006,Persona Natural,,,2.0,
+dinamicaempresarial2023.gpkg,16167,16167,16202309,2023,9,16,16,Microempresa,Agropecuaria y minera,129,Sociedad Por Acciones Simplificada,1.0,,,
+dinamicaempresarial2023.gpkg,16819,16819,16202309,2023,9,16,16,Microempresa,Servicio,5911,Sociedad Por Acciones Simplificada,24.0,3.0,,
+dinamicaempresarial2023.gpkg,20489,20489,03202309,2023,9,03,3,Microempresa,Servicio,7911,Sociedad Limitada,5.0,,,
+dinamicaempresarial2023.gpkg,21721,21721,21202309,2023,9,21,21,Microempresa,Industria,3099,Sociedad Por Acciones Simplificada,1.0,,,
+dinamicaempresarial2023.gpkg,24312,24312,11202309,2023,9,11,11,Microempresa,Servicio,9004,Sociedad Por Acciones Simplificada,95.0,14.0,,
+dinamicaempresarial2024.gpkg,4776,35703,07202403,2024,3,07,7,Microempresa,Industria,1811,Persona Natural,1.0,,,Indeterminado
+dinamicaempresarial2024.gpkg,8157,39084,02202403,2024,3,02,2,Microempresa,Comercio,4661,Sociedad Limitada,3.0,,,Masculino
+dinamicaempresarial2024.gpkg,18604,49531,08202403,2024,3,08,8,Mediana,Comercio,4520,Sociedad Por Acciones Simplificada,1.0,,,Femenino
+dinamicaempresarial2024.gpkg,20298,51225,08202403,2024,3,08,8,Microempresa,Servicio,6499,Persona Natural,1.0,,,Indeterminado
+dinamicaempresarial2024.gpkg,25721,56648,21202403,2024,3,21,21,Pequeña,Comercio,4645,Sociedad Por Acciones Simplificada,4.0,,,Femenino
+dinamicaempresarial2024.gpkg,40110,71037,06202403,2024,3,06,6,Microempresa,Industria,2431,Persona Natural,3.0,,,Masculino
+dinamicaempresarial2024.gpkg,41110,72037,01202403,2024,3,01,1,Grande,Servicio,9007,Sociedad Por Acciones Simplificada,1.0,,,Femenino
+dinamicaempresarial2025.gpkg,5596,5596,02202507,2025,7,Candelaria,2,Microempresa,Comercio,4751,Sociedad Por Acciones Simplificada,1.0,1.0,,Femenino
+dinamicaempresarial2025.gpkg,24964,24964,18202507,2025,7,Rafael Uribe Uribe,18,Microempresa,Comercio,4769,Persona Natural,4.0,,2.0,Masculino
+dinamicaempresarial2025.gpkg,25194,25194,18202507,2025,7,Rafael Uribe Uribe,18,Microempresa,Industria,1513,Persona Natural,3.0,1.0,1.0,Femenino
+dinamicaempresarial2025.gpkg,29031,29031,03202507,2025,7,Santa Fe,3,Pequeña,Industria,4111,Sociedad Limitada,1.0,,,Masculino
+dinamicaempresarial2025.gpkg,32289,32289,11202507,2025,7,Suba,11,Microempresa,Comercio,4651,Sociedad Limitada,1.0,,,Indeterminado
+dinamicaempresarial2025.gpkg,34362,34362,11202507,2025,7,Suba,11,Pequeña,Agropecuaria y minera,141,Sociedad En Comandita Simple,1.0,,,Masculino
