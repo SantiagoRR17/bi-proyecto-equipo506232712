@@ -63,4 +63,115 @@ La comparación entre las fuentes permitirá identificar distribuciones, concent
 
 ## Cómo reproducir el proyecto
 
-*Por definir en proceso de entrega 2.*
+Los siguientes pasos reproducen la construcción del DW y la carga ETL con los
+archivos que se encuentran en este repositorio. Deben ejecutarse desde la raíz
+del proyecto.
+
+### 1. Requisitos
+
+- PostgreSQL 16.
+- Python 3.
+- Pentaho Data Integration (PDI) 9.x o superior, con Java 11 o 17.
+- El controlador JDBC de PostgreSQL incluido en PDI y
+  `sqlite-jdbc-*.jar` en `data-integration/lib/`, necesario para leer los
+  GeoPackage de la dinámica empresarial.
+- Ejecutar Spoon con `-Dfile.encoding=UTF-8`.
+
+Las fuentes descargadas y sus instrucciones de origen están en
+[`datos/descarga.md`](datos/descarga.md). Las copias utilizadas por el
+proyecto están en `datos/raw/`. La copia de la fuente policial está reducida a
+las filas de Bogotá, que son las únicas que utiliza el ETL.
+
+### 2. Crear el modelo dimensional
+
+1. Conectarse a PostgreSQL usando la base `postgres` y ejecutar
+   [`dw/ddl/00_crear_base_datos.sql`](dw/ddl/00_crear_base_datos.sql) una sola
+   vez. El script crea la base `observatorio_bi`.
+2. Conectarse a `observatorio_bi` y ejecutar, en este orden:
+   [`dw/ddl/01_crear_modelo_dw.sql`](dw/ddl/01_crear_modelo_dw.sql),
+   [`dw/ddl/02_filas_desconocido.sql`](dw/ddl/02_filas_desconocido.sql) y
+   [`dw/ddl/03_verificar_modelo.sql`](dw/ddl/03_verificar_modelo.sql).
+
+El primer script del modelo recrea los esquemas `dw` y `stg`; por tanto,
+reemplaza cualquier carga anterior. Las dimensiones, excepto tiempo, incluyen
+el miembro `-1` para registros sin coincidencia en los *lookups* del ETL.
+
+### 3. Preparar el archivo de hurtos
+
+La fuente policial no contiene localidad. Para integrarla con F4 se genera un
+CSV adicional con una localidad asignada únicamente a las filas de Bogotá:
+
+```powershell
+python etl\scripts\asignar_localidad.py
+```
+
+El resultado es
+`datos/procesado/Reporte_Hurto_por_Modalidades_con_LOCALIDAD.csv`. La
+asignación es reproducible (semilla `506232712`), reparte las 176.776 filas de
+Bogotá entre las 20 localidades y deja vacías las filas de otros
+departamentos. Es un dato simulado y cualquier análisis de hurtos por
+localidad debe interpretarse con esa limitación.
+
+### 4. Configurar y ejecutar PDI
+
+Crear `~/.kettle/kettle.properties` y definir las variables que usan el job y
+las transformaciones:
+
+```properties
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=observatorio_bi
+DB_USER=<usuario_de_postgresql>
+DB_PASSWORD=<contraseña_de_postgresql>
+RAIZ_REPO=G:\bi-proyecto-equipo506232712
+ARCHIVO_HURTOS=G:\bi-proyecto-equipo506232712\datos\procesado\Reporte_Hurto_por_Modalidades_con_LOCALIDAD.csv
+FECHA_CORTE_TURISMO=20261022
+```
+
+En Windows, adaptar `RAIZ_REPO` y `ARCHIVO_HURTOS` a la ubicación local del
+repositorio. El archivo de propiedades no debe subirse al repositorio.
+
+En Spoon, abrir y ejecutar
+[`etl/trabajos/j_carga_dw.kjb`](etl/trabajos/j_carga_dw.kjb).
+
+El job es re-ejecutable: limpia hechos y dimensiones conservando los miembros
+`-1`, carga las dimensiones, carga los tres hechos y calcula las variaciones y
+la participación. El orden de las transformaciones y las reglas de calidad
+está documentado en [`etl/README.MD`](etl/README.MD) y
+[`etl/reglas_calidad.md`](etl/reglas_calidad.md). Antes de la primera
+ejecución, verificar el job en Spoon (F11), tal como indica la documentación
+del ETL.
+
+### 5. Conciliar la carga
+
+Después de ejecutar PDI, generar los valores esperados directamente desde las
+fuentes y comparar ambos caminos:
+
+```powershell
+python dw\conciliacion\generar_valores_fuente.py
+psql -d observatorio_bi -f dw\conciliacion\00_tabla_conteos_pdi.sql
+psql -d observatorio_bi -f dw\conciliacion\01_valores_fuente.sql
+psql -d observatorio_bi -f dw\conciliacion\02_conciliar.sql
+```
+
+`00_tabla_conteos_pdi.sql` se ejecuta una sola vez. Si se desea comparar los
+conteos de *Step Metrics* y del log de PDI, registrar esos valores en
+`stg.conciliacion_pdi` antes de ejecutar `02_conciliar.sql`. La conciliación
+debe mostrar `CONCILIACION OK`; su procedimiento está detallado en
+[`dw/conciliacion/README.md`](dw/conciliacion/README.md).
+
+Como comprobación adicional, ejecutar
+[`dw/ddl/03_verificar_modelo.sql`](dw/ddl/03_verificar_modelo.sql) y revisar
+la estructura, las llaves foráneas y los conteos de las ocho tablas del
+esquema `dw`. Los conteos de referencia documentados son 6.209 filas en
+`dim_tiempo`, 839 en `fact_alojamiento`, 60 en
+`fact_dinamica_empresarial` y 176.776 en `fact_hurtos`.
+
+### 6. Abrir el tablero
+
+Con la conciliación aprobada, abrir
+[`dashboard/dashboard.pbix`](dashboard/dashboard.pbix) en Power BI Desktop y
+conectar mediante PostgreSQL a `observatorio_bi`. Cargar únicamente las ocho
+tablas del esquema `dw`, no los archivos de las fuentes. La configuración de
+relaciones, medidas, páginas y verificaciones está en
+[`dashboard/guia_power_bi.md`](dashboard/guia_power_bi.md).

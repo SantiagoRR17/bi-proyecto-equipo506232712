@@ -1,5 +1,10 @@
 Todas las fuentes fueron descargadas el dia 22 de octubre de 2026.
 
+La copia versionada de la fuente policial en `datos/raw/` conserva únicamente
+las filas con `DEPARTAMENTO = BOGOTA`, porque el ETL descarta los demás
+departamentos. La fuente original completa puede volver a descargarse desde el
+enlace correspondiente.
+
 https://datosabiertos.bogota.gov.co/dataset/establecimiento-de-alojamiento-turistico-bogota
 
 Acceder al enlace y elegir la opcion Geo JavaScript Object Notation (GeoJSON)GeoJSON dando clic en explorar, posteriormente dar clic en descargar, dentro de la ventana nueva, se debera dar clic derecho y guardar como.

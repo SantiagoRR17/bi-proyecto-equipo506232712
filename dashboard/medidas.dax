@@ -1,0 +1,73 @@
+// =============================================================================
+// medidas.dax — Medidas del tablero (Power BI Desktop). Copiar cada medida en una tabla vacía llamada "_Medidas"
+// (Inicio > Especificar datos > tabla "_Medidas", luego Nueva medida). NO se han ejecutado en Power BI: verificar
+// cada cifra con consultas_tablero.sql (Q01…Q17).
+//
+// Columna calculada en dim_tiempo (Nueva columna):
+//   MesKey = dim_tiempo[anio] * 100 + dim_tiempo[numero_mes]
+// Modelo: relaciones muchos-a-uno, dirección única, de cada fact_* a sus dim_* (ver especificacion_tablero.md).
+// =============================================================================
+
+// ---------- Dinámica empresarial (F3). Un valor por CORTE: nunca se suman cortes distintos ----------
+Empresas vigentes =
+VAR corte = MAX ( fact_dinamica_empresarial[sk_tiempo] )
+RETURN
+    CALCULATE ( SUM ( fact_dinamica_empresarial[empresas_vigentes] ), fact_dinamica_empresarial[sk_tiempo] = corte )
+
+Empresas corte anterior =
+VAR corte = MAX ( fact_dinamica_empresarial[sk_tiempo] )
+VAR anterior =
+    CALCULATE ( MAX ( fact_dinamica_empresarial[sk_tiempo] ), REMOVEFILTERS ( dim_tiempo ), fact_dinamica_empresarial[sk_tiempo] < corte )
+RETURN
+    CALCULATE ( SUM ( fact_dinamica_empresarial[empresas_vigentes] ), REMOVEFILTERS ( dim_tiempo ), fact_dinamica_empresarial[sk_tiempo] = anterior )
+
+Variación empresas % = DIVIDE ( [Empresas vigentes] - [Empresas corte anterior], [Empresas corte anterior] )
+
+Establecimientos vigentes =
+VAR corte = MAX ( fact_dinamica_empresarial[sk_tiempo] )
+RETURN
+    CALCULATE ( SUM ( fact_dinamica_empresarial[establecimientos_vigentes] ), fact_dinamica_empresarial[sk_tiempo] = corte )
+
+Establecimientos corte anterior =
+VAR corte = MAX ( fact_dinamica_empresarial[sk_tiempo] )
+VAR anterior =
+    CALCULATE ( MAX ( fact_dinamica_empresarial[sk_tiempo] ), REMOVEFILTERS ( dim_tiempo ), fact_dinamica_empresarial[sk_tiempo] < corte )
+RETURN
+    CALCULATE ( SUM ( fact_dinamica_empresarial[establecimientos_vigentes] ), REMOVEFILTERS ( dim_tiempo ), fact_dinamica_empresarial[sk_tiempo] = anterior )
+
+Variación establecimientos % = DIVIDE ( [Establecimientos vigentes] - [Establecimientos corte anterior], [Establecimientos corte anterior] )
+
+// ---------- Alojamiento turístico (F1) ----------
+Alojamientos = COUNTROWS ( fact_alojamiento )
+
+Participación alojamientos % =
+DIVIDE ( [Alojamientos], CALCULATE ( [Alojamientos], REMOVEFILTERS ( dim_localidad ) ) )
+
+Alojamientos promedio por localidad =
+AVERAGEX ( FILTER ( ALL ( dim_localidad[nombre_localidad] ), [Alojamientos] > 0 ), [Alojamientos] )
+
+Localidades sin alojamientos =
+COUNTROWS ( FILTER ( dim_localidad, dim_localidad[sk_localidad] <> -1 && [Alojamientos] = 0 ) )
+
+// ---------- Hurtos (F2) ----------
+Hurtos registros = COUNTROWS ( fact_hurtos )
+
+Hurtos cantidad = SUM ( fact_hurtos[cantidad_reportada] )
+
+Promedio mensual hurtos =
+VAR meses = COUNTROWS ( FILTER ( VALUES ( dim_tiempo[MesKey] ), [Hurtos registros] > 0 ) )
+RETURN
+    DIVIDE ( [Hurtos registros], meses )
+
+Promedio mensual hurtos histórico =
+CALCULATE ( [Promedio mensual hurtos], REMOVEFILTERS ( dim_tiempo ) )
+
+Variación hurtos vs histórico % =
+DIVIDE ( [Promedio mensual hurtos] - [Promedio mensual hurtos histórico], [Promedio mensual hurtos histórico] )
+
+// ---------- Comparativo descriptivo (P4): índice base 2023 = 100 (sin inferir causalidad) ----------
+Índice empresas (2023=100) =
+DIVIDE ( [Empresas vigentes], CALCULATE ( [Empresas vigentes], REMOVEFILTERS ( dim_tiempo ), dim_tiempo[anio] = 2023 ) ) * 100
+
+Índice hurtos (2023=100) =
+DIVIDE ( [Hurtos registros], CALCULATE ( [Hurtos registros], REMOVEFILTERS ( dim_tiempo ), dim_tiempo[anio] = 2023 ) ) * 100

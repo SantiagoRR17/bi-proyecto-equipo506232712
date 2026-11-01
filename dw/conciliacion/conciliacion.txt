@@ -1,0 +1,127 @@
+DROP TABLE
+SELECT 85
+ fuente | leidas | descartadas | esperadas_cargadas | cargadas_dw | diferencia | estado 
+--------+--------+-------------+--------------------+-------------+------------+--------
+ F1     |    839 |           0 |                839 |         839 |          0 | OK
+ F2     | 176776 |           0 |             176776 |      176776 |          0 | OK
+(2 rows)
+
+ fuente | filas_detalle_empresas | filas_detalle_establecimientos | filas_agregadas_esperadas | filas_cargadas_dw 
+--------+------------------------+--------------------------------+---------------------------+-------------------
+ F3     |                 119893 |                          12923 |                        60 |                60
+(1 row)
+
+DROP TABLE
+SELECT 85
+ fuente |             concepto             |  clave   | esperado_fuente | cargado_dw | estado 
+--------+----------------------------------+----------+-----------------+------------+--------
+ DIM    | cmp_dim_caracteristica_hurto     |          |              68 |         68 | OK
+ DIM    | cmp_dim_tiempo                   |          |            6209 |       6209 | OK
+ DIM    | cmp_dim_tipo_alojamiento         |          |               7 |          7 | OK
+ DIM    | cmp_dim_tipo_hurto               |          |               2 |          2 | OK
+ F1     | cmp_filas_con_localidad_valida   |          |             839 |        839 | OK
+ F1     | cmp_filas_localidad              | 01       |              64 |         64 | OK
+ F1     | cmp_filas_localidad              | 02       |             160 |        160 | OK
+ F1     | cmp_filas_localidad              | 03       |              86 |         86 | OK
+ F1     | cmp_filas_localidad              | 05       |               2 |          2 | OK
+ F1     | cmp_filas_localidad              | 06       |               2 |          2 | OK
+ F1     | cmp_filas_localidad              | 07       |               8 |          8 | OK
+ F1     | cmp_filas_localidad              | 08       |              41 |         41 | OK
+ F1     | cmp_filas_localidad              | 09       |              75 |         75 | OK
+ F1     | cmp_filas_localidad              | 10       |              45 |         45 | OK
+ F1     | cmp_filas_localidad              | 11       |              16 |         16 | OK
+ F1     | cmp_filas_localidad              | 12       |              33 |         33 | OK
+ F1     | cmp_filas_localidad              | 13       |             209 |        209 | OK
+ F1     | cmp_filas_localidad              | 14       |              34 |         34 | OK
+ F1     | cmp_filas_localidad              | 15       |               3 |          3 | OK
+ F1     | cmp_filas_localidad              | 16       |               8 |          8 | OK
+ F1     | cmp_filas_localidad              | 17       |              48 |         48 | OK
+ F1     | cmp_filas_localidad              | 18       |               5 |          5 | OK
+ F1     | cmp_filas_subcategoria           | 10       |               1 |          1 | OK
+ F1     | cmp_filas_subcategoria           | 11       |               2 |          2 | OK
+ F1     | cmp_filas_subcategoria           | 12       |               1 |          1 | OK
+ F1     | cmp_filas_subcategoria           | 6        |              13 |         13 | OK
+ F1     | cmp_filas_subcategoria           | 7        |              86 |         86 | OK
+ F1     | cmp_filas_subcategoria           | 8        |              68 |         68 | OK
+ F1     | cmp_filas_subcategoria           | 9        |             668 |        668 | OK
+ F1     | cmp_filas_total                  |          |             839 |        839 | OK
+ F2     | cmp_filas_anio                   | 2010     |            3554 |       3554 | OK
+ F2     | cmp_filas_anio                   | 2011     |            3172 |       3172 | OK
+ F2     | cmp_filas_anio                   | 2012     |            6010 |       6010 | OK
+ F2     | cmp_filas_anio                   | 2013     |            6626 |       6626 | OK
+ F2     | cmp_filas_anio                   | 2014     |            6323 |       6323 | OK
+ F2     | cmp_filas_anio                   | 2015     |            5921 |       5921 | OK
+ F2     | cmp_filas_anio                   | 2016     |            4372 |       4372 | OK
+ F2     | cmp_filas_anio                   | 2017     |           16730 |      16730 | OK
+ F2     | cmp_filas_anio                   | 2018     |           18629 |      18629 | OK
+ F2     | cmp_filas_anio                   | 2019     |           18690 |      18690 | OK
+ F2     | cmp_filas_anio                   | 2020     |           11841 |      11841 | OK
+ F2     | cmp_filas_anio                   | 2021     |           11123 |      11123 | OK
+ F2     | cmp_filas_anio                   | 2022     |           11596 |      11596 | OK
+ F2     | cmp_filas_anio                   | 2023     |           11664 |      11664 | OK
+ F2     | cmp_filas_anio                   | 2024     |           17071 |      17071 | OK
+ F2     | cmp_filas_anio                   | 2025     |           14281 |      14281 | OK
+ F2     | cmp_filas_anio                   | 2026     |            9173 |       9173 | OK
+ F2     | cmp_filas_genero_sin_dato        |          |          160540 |     160540 | OK
+ F2     | cmp_filas_grupo_sin_dato         |          |           14811 |      14811 | OK
+ F2     | cmp_filas_localidad              | 01       |            8839 |       8839 | OK
+ F2     | cmp_filas_localidad              | 02       |            8839 |       8839 | OK
+ F2     | cmp_filas_localidad              | 03       |            8839 |       8839 | OK
+ F2     | cmp_filas_localidad              | 04       |            8839 |       8839 | OK
+ F2     | cmp_filas_localidad              | 05       |            8839 |       8839 | OK
+ F2     | cmp_filas_localidad              | 06       |            8839 |       8839 | OK
+ F2     | cmp_filas_localidad              | 07       |            8839 |       8839 | OK
+ F2     | cmp_filas_localidad              | 08       |            8839 |       8839 | OK
+ F2     | cmp_filas_localidad              | 09       |            8839 |       8839 | OK
+ F2     | cmp_filas_localidad              | 10       |            8839 |       8839 | OK
+ F2     | cmp_filas_localidad              | 11       |            8839 |       8839 | OK
+ F2     | cmp_filas_localidad              | 12       |            8839 |       8839 | OK
+ F2     | cmp_filas_localidad              | 13       |            8839 |       8839 | OK
+ F2     | cmp_filas_localidad              | 14       |            8839 |       8839 | OK
+ F2     | cmp_filas_localidad              | 15       |            8839 |       8839 | OK
+ F2     | cmp_filas_localidad              | 16       |            8839 |       8839 | OK
+ F2     | cmp_filas_localidad              | 17       |            8838 |       8838 | OK
+ F2     | cmp_filas_localidad              | 18       |            8838 |       8838 | OK
+ F2     | cmp_filas_localidad              | 19       |            8838 |       8838 | OK
+ F2     | cmp_filas_localidad              | 20       |            8838 |       8838 | OK
+ F2     | cmp_filas_total                  |          |          176776 |     176776 | OK
+ F2     | cmp_suma_cantidad                |          |          176776 |     176776 | OK
+ F3     | cmp_empresas_corte               | 20230901 |          400077 |     400077 | OK
+ F3     | cmp_empresas_corte               | 20240301 |          450376 |     450376 | OK
+ F3     | cmp_empresas_corte               | 20250701 |          378759 |     378759 | OK
+ F3     | cmp_establecimientos_corte       | 20230901 |                 |            | OK
+ F3     | cmp_establecimientos_corte       | 20240301 |          257751 |     257751 | OK
+ F3     | cmp_establecimientos_corte       | 20250701 |          221444 |     221444 | OK
+ F3     | cmp_establecimientos_nulos_corte | 20230901 |              20 |         20 | OK
+ F3     | cmp_establecimientos_nulos_corte | 20240301 |               0 |          0 | OK
+ F3     | cmp_establecimientos_nulos_corte | 20250701 |               0 |          0 | OK
+ F3     | cmp_filas_corte                  | 20230901 |              20 |         20 | OK
+ F3     | cmp_filas_corte                  | 20240301 |              20 |         20 | OK
+ F3     | cmp_filas_corte                  | 20250701 |              20 |         20 | OK
+ F3     | cmp_filas_total                  |          |              60 |         60 | OK
+ F4     | cmp_dim_localidad                |          |              20 |         20 | OK
+(85 rows)
+
+ comprobaciones | ok | diferencias |    resultado    
+----------------+----+-------------+-----------------
+             85 | 85 |           0 | CONCILIACION OK
+(1 row)
+
+ fuente | concepto | clave | esperado_fuente | reportado_pdi | paso_pdi | estado 
+--------+----------+-------+-----------------+---------------+----------+--------
+(0 rows)
+
+                         control                          | filas 
+----------------------------------------------------------+-------
+ fact_hurtos con localidad -1 (sin equivalencia)          |     0
+ fact_hurtos con tipo de hurto -1                         |     0
+ fact_hurtos con característica -1                        |     0
+ fact_alojamiento con localidad -1                        |     0
+ fact_alojamiento con tipo -1                             |     0
+ fact_dinamica con localidad -1 (código 21 Sin Localidad) |     3
+ fact_dinamica con establecimientos NULL (2023 sin dato)  |    20
+ localidades sin ningún hurto                             |     0
+ localidades sin ningún alojamiento                       |     3
+ localidades sin dinámica empresarial                     |     1
+(10 rows)
+

@@ -1,0 +1,320 @@
+2026/10/31 23:45:58 - Spoon - Starting job...
+2026/10/31 23:45:58 - j_carga_dw - Start of job execution
+2026/10/31 23:45:58 - j_carga_dw - Starting entry [Limpiar DW (conserva miembros -1)]
+2026/10/31 23:45:58 - j_carga_dw - Starting entry [t_dim_tiempo]
+2026/10/31 23:45:58 - t_dim_tiempo - Dispatching started for transformation [t_dim_tiempo]
+2026/10/31 23:45:58 - Carga dim_tiempo.0 - Connected to database [dw] (commit=1000)
+2026/10/31 23:45:59 - Generar calendario 2010-2026.0 - Finished reading query, closing connection
+2026/10/31 23:45:59 - Generar calendario 2010-2026.0 - Finished processing (I=6209, O=0, R=0, W=6209, U=0, E=0)
+2026/10/31 23:46:00 - Carga dim_tiempo.0 - Finished processing (I=0, O=6209, R=6209, W=6209, U=0, E=0)
+2026/10/31 23:46:00 - j_carga_dw - Starting entry [t_dim_localidad]
+2026/10/31 23:46:00 - t_dim_localidad - Dispatching started for transformation [t_dim_localidad]
+2026/10/31 23:46:00 - Carga dim_localidad.0 - Connected to database [dw] (commit=1000)
+2026/10/31 23:46:00 - Tabla de equivalencia de localidades.0 - Header row skipped in file 'G:/bi-proyecto-equipo506232712/etl/equivalencias/equivalencia_localidad.csv'
+2026/10/31 23:46:00 - Tabla de equivalencia de localidades.0 - Finished processing (I=50, O=0, R=0, W=49, U=0, E=0)
+2026/10/31 23:46:00 - F4 geografia.json.0 - Finished processing (I=20, O=0, R=0, W=20, U=0, E=0)
+2026/10/31 23:46:00 - P15-F4 Excluir geometria (EPSG:4686) y conservar solo atributos.0 - Finished processing (I=0, O=0, R=20, W=20, U=0, E=0)
+2026/10/31 23:46:00 - C-F4-01 Descartar registros sin codigo.0 - Finished processing (I=0, O=0, R=20, W=20, U=0, E=0)
+2026/10/31 23:46:00 - C-F4-02 Normalizar codigo (2 digitos) y textos.0 - Optimization level set to 9.
+2026/10/31 23:46:00 - C-F4-02 Normalizar codigo (2 digitos) y textos.0 - C-F4-02 Normalizar codigo (2 digitos) y textos | c_codigo_ajustado: 0
+2026/10/31 23:46:00 - C-F4-02 Normalizar codigo (2 digitos) y textos.0 - Finished processing (I=0, O=0, R=20, W=20, U=0, E=0)
+2026/10/31 23:46:00 - P14-F4 Buscar nombre en tabla de equivalencia.0 - Finished processing (I=0, O=0, R=69, W=20, U=0, E=0)
+2026/10/31 23:46:00 - P14-F4 Validar nombre contra tabla de equivalencia.0 - Finished processing (I=0, O=0, R=20, W=20, U=0, E=0)
+2026/10/31 23:46:00 - C-F4-03 Rechazar codigos no validos (CHAR(2) numerico).0 - Finished processing (I=0, O=0, R=20, W=20, U=0, E=0)
+2026/10/31 23:46:00 - C-F4-04 Eliminar duplicados por cod_localidad.0 - Finished processing (I=0, O=0, R=20, W=20, U=0, E=0)
+2026/10/31 23:46:00 - Carga dim_localidad.0 - Finished processing (I=0, O=20, R=20, W=20, U=0, E=0)
+2026/10/31 23:46:00 - j_carga_dw - Starting entry [t_dim_tipo_alojamiento]
+2026/10/31 23:46:00 - t_dim_tipo_alojamiento - Dispatching started for transformation [t_dim_tipo_alojamiento]
+2026/10/31 23:46:00 - Carga dim_tipo_alojamiento.0 - Connected to database [dw] (commit=1000)
+2026/10/31 23:46:00 - P03-F1 Conservar codigo numerico SUBCATRNT (sin etiqueta A-Z).0 - Optimization level set to 9.
+2026/10/31 23:46:01 - F1 turismo.geojson.0 - Finished processing (I=839, O=0, R=0, W=839, U=0, E=0)
+2026/10/31 23:46:01 - C-F1-01 Descartar subcategoria nula.0 - Finished processing (I=0, O=0, R=839, W=839, U=0, E=0)
+2026/10/31 23:46:01 - P03-F1 Conservar codigo numerico SUBCATRNT (sin etiqueta A-Z).0 - P03-F1 Conservar codigo numerico SUBCATRNT (sin etiqueta A-Z) | c_codigo_numerico_sin_etiqueta: 839
+2026/10/31 23:46:01 - P03-F1 Conservar codigo numerico SUBCATRNT (sin etiqueta A-Z).0 - Finished processing (I=0, O=0, R=839, W=839, U=0, E=0)
+2026/10/31 23:46:01 - C-F1-02 Distintos por subcategoria.0 - Finished processing (I=0, O=0, R=839, W=7, U=0, E=832)
+2026/10/31 23:46:01 - Carga dim_tipo_alojamiento.0 - Finished processing (I=0, O=7, R=7, W=7, U=0, E=0)
+2026/10/31 23:46:01 - j_carga_dw - Starting entry [t_dim_tipo_hurto]
+2026/10/31 23:46:01 - t_dim_tipo_hurto - Dispatching started for transformation [t_dim_tipo_hurto]
+2026/10/31 23:46:01 - Carga dim_tipo_hurto.0 - Connected to database [dw] (commit=1000)
+2026/10/31 23:46:01 - F2 Hurtos (CSV).0 - Header row skipped in file 'G:/bi-proyecto-equipo506232712/datos/procesado/Reporte_Hurto_Bogota_con_LOCALIDAD.csv'
+2026/10/31 23:46:01 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - Optimization level set to 9.
+2026/10/31 23:46:01 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - Optimization level set to 9.
+2026/10/31 23:46:01 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - Optimization level set to 9.
+2026/10/31 23:46:01 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - Optimization level set to 9.
+2026/10/31 23:46:01 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - Optimization level set to 9.
+2026/10/31 23:46:01 - F2 Hurtos (CSV).0 - Line number : 50000
+2026/10/31 23:46:01 - Seleccionar y renombrar columnas F2.0 - linenr 50000
+2026/10/31 23:46:02 - P04-F2 Filtrar solo Bogota D.C. (DEPARTAMENTO = BOGOTA).0 - linenr 50000
+2026/10/31 23:46:02 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - linenr 50000
+2026/10/31 23:46:02 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - linenr 50000
+2026/10/31 23:46:02 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - linenr 50000
+2026/10/31 23:46:02 - C-F2-01 Rechazar filas con fecha, cantidad o tipo invalidos.0 - linenr 50000
+2026/10/31 23:46:02 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - linenr 50000
+2026/10/31 23:46:02 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - linenr 50000
+2026/10/31 23:46:02 - C-F2-04 Distintos por tipo de hurto.0 - Linenr 50000
+2026/10/31 23:46:02 - Fin del frente F2.0 - Linenr 50000
+2026/10/31 23:46:02 - F2 Hurtos (CSV).0 - Line number : 100000
+2026/10/31 23:46:02 - Seleccionar y renombrar columnas F2.0 - linenr 100000
+2026/10/31 23:46:02 - P04-F2 Filtrar solo Bogota D.C. (DEPARTAMENTO = BOGOTA).0 - linenr 100000
+2026/10/31 23:46:02 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - linenr 100000
+2026/10/31 23:46:02 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - linenr 100000
+2026/10/31 23:46:03 - F2 Hurtos (CSV).0 - Line number : 150000
+2026/10/31 23:46:03 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - linenr 100000
+2026/10/31 23:46:03 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - linenr 100000
+2026/10/31 23:46:03 - Seleccionar y renombrar columnas F2.0 - linenr 150000
+2026/10/31 23:46:03 - C-F2-04 Distintos por tipo de hurto.0 - Linenr 100000
+2026/10/31 23:46:03 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - linenr 100000
+2026/10/31 23:46:03 - Fin del frente F2.0 - Linenr 100000
+2026/10/31 23:46:03 - C-F2-01 Rechazar filas con fecha, cantidad o tipo invalidos.0 - linenr 100000
+2026/10/31 23:46:03 - P04-F2 Filtrar solo Bogota D.C. (DEPARTAMENTO = BOGOTA).0 - linenr 150000
+2026/10/31 23:46:03 - F2 Hurtos (CSV).0 - Finished processing (I=176777, O=0, R=0, W=176776, U=0, E=0)
+2026/10/31 23:46:03 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - linenr 150000
+2026/10/31 23:46:03 - Seleccionar y renombrar columnas F2.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:03 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - linenr 150000
+2026/10/31 23:46:03 - P04-F2 Filtrar solo Bogota D.C. (DEPARTAMENTO = BOGOTA).0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:03 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - linenr 150000
+2026/10/31 23:46:04 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota | c_municipio_dane_incoherente: 0
+2026/10/31 23:46:04 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:04 - C-F2-01 Rechazar filas con fecha, cantidad o tipo invalidos.0 - linenr 150000
+2026/10/31 23:46:04 - C-F2-04 Distintos por tipo de hurto.0 - Linenr 150000
+2026/10/31 23:46:04 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - linenr 150000
+2026/10/31 23:46:04 - Fin del frente F2.0 - Linenr 150000
+2026/10/31 23:46:04 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - linenr 150000
+2026/10/31 23:46:04 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo | c_fecha_invalida: 0
+2026/10/31 23:46:04 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:04 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - P06-F2 Validar CANTIDAD entera mayor que 0 | c_cantidad_invalida: 0
+2026/10/31 23:46:04 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:04 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO | c_arma_vacio: 0
+2026/10/31 23:46:04 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO | c_genero_vacio: 160540
+2026/10/31 23:46:04 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO | c_grupo_vacio: 14811
+2026/10/31 23:46:04 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:04 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - P08-F2 Tipificar tipo de hurto (articulo + descripcion) | c_tipo_vacio: 0
+2026/10/31 23:46:04 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - P08-F2 Tipificar tipo de hurto (articulo + descripcion) | c_tipo_sin_articulo: 0
+2026/10/31 23:46:04 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:04 - C-F2-01 Rechazar filas con fecha, cantidad o tipo invalidos.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:04 - Fin del frente F2.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:04 - C-F2-04 Distintos por tipo de hurto.0 - Finished processing (I=0, O=0, R=176776, W=2, U=0, E=176774)
+2026/10/31 23:46:04 - Carga dim_tipo_hurto.0 - Finished processing (I=0, O=2, R=2, W=2, U=0, E=0)
+2026/10/31 23:46:04 - j_carga_dw - Starting entry [t_dim_caracteristica_hurto]
+2026/10/31 23:46:04 - t_dim_caracteristica_hurto - Dispatching started for transformation [t_dim_caracteristica_hurto]
+2026/10/31 23:46:04 - Carga dim_caracteristica_hurto.0 - Connected to database [dw] (commit=1000)
+2026/10/31 23:46:04 - F2 Hurtos (CSV).0 - Header row skipped in file 'G:/bi-proyecto-equipo506232712/datos/procesado/Reporte_Hurto_Bogota_con_LOCALIDAD.csv'
+2026/10/31 23:46:04 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - Optimization level set to 9.
+2026/10/31 23:46:04 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - Optimization level set to 9.
+2026/10/31 23:46:04 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - Optimization level set to 9.
+2026/10/31 23:46:04 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - Optimization level set to 9.
+2026/10/31 23:46:04 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - Optimization level set to 9.
+2026/10/31 23:46:04 - F2 Hurtos (CSV).0 - Line number : 50000
+2026/10/31 23:46:04 - Seleccionar y renombrar columnas F2.0 - linenr 50000
+2026/10/31 23:46:05 - P04-F2 Filtrar solo Bogota D.C. (DEPARTAMENTO = BOGOTA).0 - linenr 50000
+2026/10/31 23:46:05 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - linenr 50000
+2026/10/31 23:46:05 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - linenr 50000
+2026/10/31 23:46:05 - F2 Hurtos (CSV).0 - Line number : 100000
+2026/10/31 23:46:05 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - linenr 50000
+2026/10/31 23:46:05 - Seleccionar y renombrar columnas F2.0 - linenr 100000
+2026/10/31 23:46:05 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - linenr 50000
+2026/10/31 23:46:05 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - linenr 50000
+2026/10/31 23:46:05 - C-F2-01 Rechazar filas con fecha, cantidad o tipo invalidos.0 - linenr 50000
+2026/10/31 23:46:05 - C-F2-05 Distintos por (arma, genero, grupo).0 - Linenr 50000
+2026/10/31 23:46:05 - Fin del frente F2.0 - Linenr 50000
+2026/10/31 23:46:05 - P04-F2 Filtrar solo Bogota D.C. (DEPARTAMENTO = BOGOTA).0 - linenr 100000
+2026/10/31 23:46:05 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - linenr 100000
+2026/10/31 23:46:06 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - linenr 100000
+2026/10/31 23:46:06 - F2 Hurtos (CSV).0 - Line number : 150000
+2026/10/31 23:46:06 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - linenr 100000
+2026/10/31 23:46:06 - Seleccionar y renombrar columnas F2.0 - linenr 150000
+2026/10/31 23:46:06 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - linenr 100000
+2026/10/31 23:46:06 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - linenr 100000
+2026/10/31 23:46:06 - C-F2-01 Rechazar filas con fecha, cantidad o tipo invalidos.0 - linenr 100000
+2026/10/31 23:46:06 - Fin del frente F2.0 - Linenr 100000
+2026/10/31 23:46:06 - C-F2-05 Distintos por (arma, genero, grupo).0 - Linenr 100000
+2026/10/31 23:46:06 - P04-F2 Filtrar solo Bogota D.C. (DEPARTAMENTO = BOGOTA).0 - linenr 150000
+2026/10/31 23:46:06 - F2 Hurtos (CSV).0 - Finished processing (I=176777, O=0, R=0, W=176776, U=0, E=0)
+2026/10/31 23:46:06 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - linenr 150000
+2026/10/31 23:46:06 - Seleccionar y renombrar columnas F2.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:06 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - linenr 150000
+2026/10/31 23:46:06 - P04-F2 Filtrar solo Bogota D.C. (DEPARTAMENTO = BOGOTA).0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:07 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - linenr 150000
+2026/10/31 23:46:07 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota | c_municipio_dane_incoherente: 0
+2026/10/31 23:46:07 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:07 - C-F2-01 Rechazar filas con fecha, cantidad o tipo invalidos.0 - linenr 150000
+2026/10/31 23:46:07 - C-F2-05 Distintos por (arma, genero, grupo).0 - Linenr 150000
+2026/10/31 23:46:07 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - linenr 150000
+2026/10/31 23:46:07 - Fin del frente F2.0 - Linenr 150000
+2026/10/31 23:46:07 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - linenr 150000
+2026/10/31 23:46:07 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo | c_fecha_invalida: 0
+2026/10/31 23:46:07 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:07 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - P06-F2 Validar CANTIDAD entera mayor que 0 | c_cantidad_invalida: 0
+2026/10/31 23:46:07 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:07 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO | c_arma_vacio: 0
+2026/10/31 23:46:07 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO | c_genero_vacio: 160540
+2026/10/31 23:46:07 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO | c_grupo_vacio: 14811
+2026/10/31 23:46:07 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:07 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - P08-F2 Tipificar tipo de hurto (articulo + descripcion) | c_tipo_vacio: 0
+2026/10/31 23:46:07 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - P08-F2 Tipificar tipo de hurto (articulo + descripcion) | c_tipo_sin_articulo: 0
+2026/10/31 23:46:07 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:07 - C-F2-01 Rechazar filas con fecha, cantidad o tipo invalidos.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:07 - Fin del frente F2.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:07 - C-F2-05 Distintos por (arma, genero, grupo).0 - Finished processing (I=0, O=0, R=176776, W=68, U=0, E=176708)
+2026/10/31 23:46:07 - Carga dim_caracteristica_hurto.0 - Finished processing (I=0, O=68, R=68, W=68, U=0, E=0)
+2026/10/31 23:46:07 - j_carga_dw - Starting entry [t_fact_dinamica_empresarial]
+2026/10/31 23:46:07 - t_fact_dinamica_empresarial - Dispatching started for transformation [t_fact_dinamica_empresarial]
+2026/10/31 23:46:07 - Carga fact_dinamica_empresarial.0 - Connected to database [dw] (commit=1000)
+2026/10/31 23:46:07 - Tabla de equivalencia de localidades.0 - Header row skipped in file 'G:/bi-proyecto-equipo506232712/etl/equivalencias/equivalencia_localidad.csv'
+2026/10/31 23:46:07 - Tabla de equivalencia de localidades.0 - Finished processing (I=50, O=0, R=0, W=49, U=0, E=0)
+2026/10/31 23:46:07 - P12-F3 Conservar NULL de establecimientos (no imputar).0 - Optimization level set to 9.
+2026/10/31 23:46:07 - P13-F3 2023 detalle agregado por localidad y corte (Periodo/Mes).0 - Finished reading query, closing connection
+2026/10/31 23:46:07 - P13-F3 2023 detalle agregado por localidad y corte (Periodo/Mes).0 - Finished processing (I=20, O=0, R=0, W=20, U=0, E=0)
+2026/10/31 23:46:07 - P11-F3 Unificar identificador de localidad (codigo o nombre).0 - Optimization level set to 9.
+2026/10/31 23:46:07 - P13-F3 2025 detalle agregado por localidad y corte (Periodo/Mes).0 - Finished reading query, closing connection
+2026/10/31 23:46:07 - P13-F3 2024 detalle agregado por localidad y corte (Periodo/Mes).0 - Finished reading query, closing connection
+2026/10/31 23:46:07 - P13-F3 2025 detalle agregado por localidad y corte (Periodo/Mes).0 - Finished processing (I=20, O=0, R=0, W=20, U=0, E=0)
+2026/10/31 23:46:07 - P13-F3 2024 detalle agregado por localidad y corte (Periodo/Mes).0 - Finished processing (I=20, O=0, R=0, W=20, U=0, E=0)
+2026/10/31 23:46:07 - Forzar tipos 2025.0 - Finished processing (I=0, O=0, R=20, W=20, U=0, E=0)
+2026/10/31 23:46:07 - Forzar tipos 2024.0 - Finished processing (I=0, O=0, R=20, W=20, U=0, E=0)
+2026/10/31 23:46:07 - Forzar tipos 2023.0 - Finished processing (I=0, O=0, R=20, W=20, U=0, E=0)
+2026/10/31 23:46:07 - Unir cortes 2023-2025.0 - Finished processing (I=0, O=0, R=60, W=60, U=0, E=0)
+2026/10/31 23:46:07 - P12-F3 Conservar NULL de establecimientos (no imputar).0 - P12-F3 Conservar NULL de establecimientos (no imputar) | c_establecimientos_nulos: 20
+2026/10/31 23:46:07 - P12-F3 Conservar NULL de establecimientos (no imputar).0 - Finished processing (I=0, O=0, R=60, W=60, U=0, E=0)
+2026/10/31 23:46:07 - C-F3-01 Descartar localidades sin empresas vigentes.0 - Finished processing (I=0, O=0, R=60, W=60, U=0, E=0)
+2026/10/31 23:46:07 - P11-F3 Unificar identificador de localidad (codigo o nombre).0 - P11-F3 Unificar identificador de localidad (codigo o nombre) | c_identificado_por_nombre: 20
+2026/10/31 23:46:07 - P11-F3 Unificar identificador de localidad (codigo o nombre).0 - P11-F3 Unificar identificador de localidad (codigo o nombre) | c_grafia_distinta: 20
+2026/10/31 23:46:07 - P11-F3 Unificar identificador de localidad (codigo o nombre).0 - P11-F3 Unificar identificador de localidad (codigo o nombre) | c_sin_localidad_21: 2
+2026/10/31 23:46:07 - P11-F3 Unificar identificador de localidad (codigo o nombre).0 - Finished processing (I=0, O=0, R=60, W=60, U=0, E=0)
+2026/10/31 23:46:07 - P11-F3 Homologar con tabla de equivalencia.0 - Finished processing (I=0, O=0, R=109, W=60, U=0, E=0)
+2026/10/31 23:46:07 - Lookup dim_localidad (sk_localidad, -1 si no existe).0 - Finished processing (I=21, O=0, R=60, W=60, U=0, E=0)
+2026/10/31 23:46:07 - Carga fact_dinamica_empresarial.0 - Finished processing (I=0, O=60, R=60, W=60, U=0, E=0)
+2026/10/31 23:46:07 - j_carga_dw - Starting entry [t_fact_alojamiento]
+2026/10/31 23:46:08 - t_fact_alojamiento - Dispatching started for transformation [t_fact_alojamiento]
+2026/10/31 23:46:08 - Carga fact_alojamiento.0 - Connected to database [dw] (commit=1000)
+2026/10/31 23:46:08 - Tabla de equivalencia de localidades.0 - Header row skipped in file 'G:/bi-proyecto-equipo506232712/etl/equivalencias/equivalencia_localidad.csv'
+2026/10/31 23:46:08 - Tabla de equivalencia de localidades.0 - Finished processing (I=50, O=0, R=0, W=49, U=0, E=0)
+2026/10/31 23:46:08 - C-F1-04 Tipificar RNT y subcategoria.0 - Optimization level set to 9.
+2026/10/31 23:46:08 - F1 turismo.geojson.0 - Finished processing (I=839, O=0, R=0, W=839, U=0, E=0)
+2026/10/31 23:46:08 - P01-F1 Completar LOCALIDAD a 2 digitos (3 -> 03).0 - Optimization level set to 9.
+2026/10/31 23:46:08 - C-F1-03 Descartar sin numero de registro RNT.0 - Finished processing (I=0, O=0, R=839, W=839, U=0, E=0)
+2026/10/31 23:46:08 - C-F1-04 Tipificar RNT y subcategoria.0 - Finished processing (I=0, O=0, R=839, W=839, U=0, E=0)
+2026/10/31 23:46:08 - P01-F1 Completar LOCALIDAD a 2 digitos (3 -> 03).0 - P01-F1 Completar LOCALIDAD a 2 digitos (3 -> 03) | c_sin_cero_izquierda: 438
+2026/10/31 23:46:08 - P01-F1 Completar LOCALIDAD a 2 digitos (3 -> 03).0 - P01-F1 Completar LOCALIDAD a 2 digitos (3 -> 03) | c_localidad_vacia: 0
+2026/10/31 23:46:08 - P01-F1 Completar LOCALIDAD a 2 digitos (3 -> 03).0 - Finished processing (I=0, O=0, R=839, W=839, U=0, E=0)
+2026/10/31 23:46:08 - P02-F1 Excluir geometria (EPSG:3857) y LATITUD/LONGITUD; solo se usa LOCALIDAD.0 - Finished processing (I=0, O=0, R=839, W=839, U=0, E=0)
+2026/10/31 23:46:08 - C-F1-05 Rechazar RNT no numerico.0 - Finished processing (I=0, O=0, R=839, W=839, U=0, E=0)
+2026/10/31 23:46:08 - C-F1-06 Eliminar RNT duplicados.0 - Finished processing (I=0, O=0, R=839, W=839, U=0, E=0)
+2026/10/31 23:46:08 - P01-F1 Homologar LOCALIDAD con tabla de equivalencia.0 - Finished processing (I=0, O=0, R=888, W=839, U=0, E=0)
+2026/10/31 23:46:08 - Lookup dim_localidad (sk_localidad, -1 si no existe).0 - Finished processing (I=21, O=0, R=839, W=839, U=0, E=0)
+2026/10/31 23:46:08 - Lookup dim_tipo_alojamiento (-1 si no existe).0 - Finished processing (I=8, O=0, R=839, W=839, U=0, E=0)
+2026/10/31 23:46:08 - Carga fact_alojamiento.0 - Finished processing (I=0, O=839, R=839, W=839, U=0, E=0)
+2026/10/31 23:46:08 - j_carga_dw - Starting entry [t_fact_hurtos]
+2026/10/31 23:46:08 - t_fact_hurtos - Dispatching started for transformation [t_fact_hurtos]
+2026/10/31 23:46:08 - Carga fact_hurtos.0 - Connected to database [dw] (commit=1000)
+2026/10/31 23:46:08 - F2 Hurtos (CSV).0 - Header row skipped in file 'G:/bi-proyecto-equipo506232712/datos/procesado/Reporte_Hurto_Bogota_con_LOCALIDAD.csv'
+2026/10/31 23:46:08 - Tabla de equivalencia de localidades.0 - Header row skipped in file 'G:/bi-proyecto-equipo506232712/etl/equivalencias/equivalencia_localidad.csv'
+2026/10/31 23:46:08 - Tabla de equivalencia de localidades.0 - Finished processing (I=50, O=0, R=0, W=49, U=0, E=0)
+2026/10/31 23:46:08 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - Optimization level set to 9.
+2026/10/31 23:46:08 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - Optimization level set to 9.
+2026/10/31 23:46:08 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - Optimization level set to 9.
+2026/10/31 23:46:08 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - Optimization level set to 9.
+2026/10/31 23:46:08 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - Optimization level set to 9.
+2026/10/31 23:46:08 - P09-F2 Normalizar LOCALIDAD (tildes y mayusculas).0 - Optimization level set to 9.
+2026/10/31 23:46:08 - P09-F2 Contar LOCALIDAD sin equivalencia (-> 99 / miembro -1).0 - Optimization level set to 9.
+2026/10/31 23:46:09 - F2 Hurtos (CSV).0 - Line number : 50000
+2026/10/31 23:46:09 - Seleccionar y renombrar columnas F2.0 - linenr 50000
+2026/10/31 23:46:09 - P04-F2 Filtrar solo Bogota D.C. (DEPARTAMENTO = BOGOTA).0 - linenr 50000
+2026/10/31 23:46:09 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - linenr 50000
+2026/10/31 23:46:09 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - linenr 50000
+2026/10/31 23:46:09 - F2 Hurtos (CSV).0 - Line number : 100000
+2026/10/31 23:46:09 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - linenr 50000
+2026/10/31 23:46:10 - P09-F2 Homologar LOCALIDAD con tabla de equivalencia.0 - linenr 50000
+2026/10/31 23:46:10 - Seleccionar y renombrar columnas F2.0 - linenr 100000
+2026/10/31 23:46:10 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - linenr 50000
+2026/10/31 23:46:10 - Fin del frente F2.0 - Linenr 50000
+2026/10/31 23:46:10 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - linenr 50000
+2026/10/31 23:46:10 - C-F2-01 Rechazar filas con fecha, cantidad o tipo invalidos.0 - linenr 50000
+2026/10/31 23:46:10 - P09-F2 Normalizar LOCALIDAD (tildes y mayusculas).0 - linenr 50000
+2026/10/31 23:46:10 - P10-F2 Detectar repeticiones de los 9 campos originales (solo conteo).0 - Linenr 50000
+2026/10/31 23:46:10 - P04-F2 Filtrar solo Bogota D.C. (DEPARTAMENTO = BOGOTA).0 - linenr 100000
+2026/10/31 23:46:10 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - linenr 100000
+2026/10/31 23:46:10 - P10-F2 Duplicados potenciales (solo conteo; se conservan en el DW).0 - Linenr 50000
+2026/10/31 23:46:10 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - linenr 100000
+2026/10/31 23:46:10 - F2 Hurtos (CSV).0 - Line number : 150000
+2026/10/31 23:46:10 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - linenr 100000
+2026/10/31 23:46:11 - Seleccionar y renombrar columnas F2.0 - linenr 150000
+2026/10/31 23:46:11 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - linenr 100000
+2026/10/31 23:46:11 - P09-F2 Contar LOCALIDAD sin equivalencia (-> 99 / miembro -1).0 - linenr 50000
+2026/10/31 23:46:11 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - linenr 100000
+2026/10/31 23:46:11 - P04-F2 Filtrar solo Bogota D.C. (DEPARTAMENTO = BOGOTA).0 - linenr 150000
+2026/10/31 23:46:13 - F2 Hurtos (CSV).0 - Finished processing (I=176777, O=0, R=0, W=176776, U=0, E=0)
+2026/10/31 23:46:13 - Lookup dim_localidad (sk_localidad, -1 si no existe).0 - linenr 50000
+2026/10/31 23:46:13 - C-F2-01 Rechazar filas con fecha, cantidad o tipo invalidos.0 - linenr 100000
+2026/10/31 23:46:13 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - linenr 150000
+2026/10/31 23:46:15 - Seleccionar y renombrar columnas F2.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:15 - Lookup dim_tipo_hurto (-1 si no existe).0 - linenr 50000
+2026/10/31 23:46:15 - P10-F2 Detectar repeticiones de los 9 campos originales (solo conteo).0 - Linenr 100000
+2026/10/31 23:46:15 - Fin del frente F2.0 - Linenr 100000
+2026/10/31 23:46:15 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - linenr 150000
+2026/10/31 23:46:17 - P04-F2 Filtrar solo Bogota D.C. (DEPARTAMENTO = BOGOTA).0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:17 - Lookup dim_caracteristica_hurto (-1 si no existe).0 - linenr 50000
+2026/10/31 23:46:17 - P09-F2 Normalizar LOCALIDAD (tildes y mayusculas).0 - linenr 100000
+2026/10/31 23:46:17 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - linenr 150000
+2026/10/31 23:46:19 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota | c_municipio_dane_incoherente: 0
+2026/10/31 23:46:19 - P04-F2 Verificar MUNICIPIO y CODIGO DANE de Bogota.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:19 - P09-F2 Homologar LOCALIDAD con tabla de equivalencia.0 - linenr 100000
+2026/10/31 23:46:19 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - linenr 150000
+2026/10/31 23:46:20 - Carga fact_hurtos.0 - linenr 50000
+2026/10/31 23:46:21 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo | c_fecha_invalida: 0
+2026/10/31 23:46:21 - P05-F2 Convertir FECHA HECHO (dd/mm/aaaa) a sk_tiempo.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:21 - P09-F2 Contar LOCALIDAD sin equivalencia (-> 99 / miembro -1).0 - linenr 100000
+2026/10/31 23:46:21 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - linenr 150000
+2026/10/31 23:46:22 - P10-F2 Duplicados potenciales (solo conteo; se conservan en el DW).0 - Linenr 100000
+2026/10/31 23:46:23 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - P06-F2 Validar CANTIDAD entera mayor que 0 | c_cantidad_invalida: 0
+2026/10/31 23:46:23 - P06-F2 Validar CANTIDAD entera mayor que 0.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:24 - Lookup dim_localidad (sk_localidad, -1 si no existe).0 - linenr 100000
+2026/10/31 23:46:24 - C-F2-01 Rechazar filas con fecha, cantidad o tipo invalidos.0 - linenr 150000
+2026/10/31 23:46:25 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO | c_arma_vacio: 0
+2026/10/31 23:46:25 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO | c_genero_vacio: 160540
+2026/10/31 23:46:25 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO | c_grupo_vacio: 14811
+2026/10/31 23:46:25 - P07-F2 Vacios de genero, grupo etario y arma -> SIN DATO.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:26 - Lookup dim_tipo_hurto (-1 si no existe).0 - linenr 100000
+2026/10/31 23:46:26 - P10-F2 Detectar repeticiones de los 9 campos originales (solo conteo).0 - Linenr 150000
+2026/10/31 23:46:26 - Fin del frente F2.0 - Linenr 150000
+2026/10/31 23:46:27 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - P08-F2 Tipificar tipo de hurto (articulo + descripcion) | c_tipo_vacio: 0
+2026/10/31 23:46:27 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - P08-F2 Tipificar tipo de hurto (articulo + descripcion) | c_tipo_sin_articulo: 0
+2026/10/31 23:46:27 - P08-F2 Tipificar tipo de hurto (articulo + descripcion).0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:28 - Lookup dim_caracteristica_hurto (-1 si no existe).0 - linenr 100000
+2026/10/31 23:46:28 - P09-F2 Normalizar LOCALIDAD (tildes y mayusculas).0 - linenr 150000
+2026/10/31 23:46:29 - C-F2-01 Rechazar filas con fecha, cantidad o tipo invalidos.0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:30 - P09-F2 Homologar LOCALIDAD con tabla de equivalencia.0 - linenr 150000
+2026/10/31 23:46:30 - Carga fact_hurtos.0 - linenr 100000
+2026/10/31 23:46:31 - Fin del frente F2.0 - Finished processing (I=0, O=0, R=176776, W=353552, U=0, E=0)
+2026/10/31 23:46:31 - P10-F2 Detectar repeticiones de los 9 campos originales (solo conteo).0 - Finished processing (I=0, O=0, R=176776, W=32713, U=0, E=288126)
+2026/10/31 23:46:31 - P10-F2 Duplicados potenciales (solo conteo; se conservan en el DW).0 - Finished processing (I=0, O=0, R=144063, W=144063, U=0, E=0)
+2026/10/31 23:46:31 - P10 Primera aparicion (solo conteo).0 - Finished processing (I=0, O=0, R=32713, W=32713, U=0, E=0)
+2026/10/31 23:46:32 - P09-F2 Contar LOCALIDAD sin equivalencia (-> 99 / miembro -1).0 - linenr 150000
+2026/10/31 23:46:33 - P09-F2 Normalizar LOCALIDAD (tildes y mayusculas).0 - P09-F2 Normalizar LOCALIDAD (tildes y mayusculas) | c_localidad_vacia: 0
+2026/10/31 23:46:33 - P09-F2 Normalizar LOCALIDAD (tildes y mayusculas).0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:34 - Lookup dim_localidad (sk_localidad, -1 si no existe).0 - linenr 150000
+2026/10/31 23:46:35 - P09-F2 Homologar LOCALIDAD con tabla de equivalencia.0 - Finished processing (I=0, O=0, R=176825, W=176776, U=0, E=0)
+2026/10/31 23:46:36 - Lookup dim_tipo_hurto (-1 si no existe).0 - linenr 150000
+2026/10/31 23:46:38 - P09-F2 Contar LOCALIDAD sin equivalencia (-> 99 / miembro -1).0 - P09-F2 Contar LOCALIDAD sin equivalencia (-> 99 / miembro -1) | c_sin_equivalencia: 0
+2026/10/31 23:46:38 - P09-F2 Contar LOCALIDAD sin equivalencia (-> 99 / miembro -1).0 - Finished processing (I=0, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:38 - Lookup dim_caracteristica_hurto (-1 si no existe).0 - linenr 150000
+2026/10/31 23:46:40 - Lookup dim_localidad (sk_localidad, -1 si no existe).0 - Finished processing (I=21, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:40 - Carga fact_hurtos.0 - linenr 150000
+2026/10/31 23:46:42 - Lookup dim_tipo_hurto (-1 si no existe).0 - Finished processing (I=3, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:44 - Lookup dim_caracteristica_hurto (-1 si no existe).0 - Finished processing (I=69, O=0, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:46 - Carga fact_hurtos.0 - Finished processing (I=0, O=176776, R=176776, W=176776, U=0, E=0)
+2026/10/31 23:46:46 - j_carga_dw - Starting entry [Calcular variación % y participación %]
+2026/10/31 23:46:46 - j_carga_dw - Starting entry [Éxito]
+2026/10/31 23:46:46 - j_carga_dw - Finished job entry [Éxito] (result=[true])
+2026/10/31 23:46:46 - j_carga_dw - Finished job entry [Calcular variación % y participación %] (result=[true])
+2026/10/31 23:46:46 - j_carga_dw - Finished job entry [t_fact_hurtos] (result=[true])
+2026/10/31 23:46:46 - j_carga_dw - Finished job entry [t_fact_alojamiento] (result=[true])
+2026/10/31 23:46:46 - j_carga_dw - Finished job entry [t_fact_dinamica_empresarial] (result=[true])
+2026/10/31 23:46:46 - j_carga_dw - Finished job entry [t_dim_caracteristica_hurto] (result=[true])
+2026/10/31 23:46:46 - j_carga_dw - Finished job entry [t_dim_tipo_hurto] (result=[true])
+2026/10/31 23:46:46 - j_carga_dw - Finished job entry [t_dim_tipo_alojamiento] (result=[true])
+2026/10/31 23:46:46 - j_carga_dw - Finished job entry [t_dim_localidad] (result=[true])
+2026/10/31 23:46:46 - j_carga_dw - Finished job entry [t_dim_tiempo] (result=[true])
+2026/10/31 23:46:46 - j_carga_dw - Finished job entry [Limpiar DW (conserva miembros -1)] (result=[true])
+2026/10/31 23:46:46 - j_carga_dw - Job execution finished
+2026/10/31 23:46:46 - Spoon - Job has ended.

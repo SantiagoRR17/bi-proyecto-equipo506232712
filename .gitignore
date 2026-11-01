@@ -1,0 +1,23 @@
+# Salidas generadas localmente por el ETL
+datos/procesado/
+
+# Configuración local de Pentaho y secretos
+.kettle/
+kettle.properties
+.env
+.env.*
+!.env.example
+
+# Cachés y entornos locales de Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Configuración local del editor y del sistema operativo
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Archivos temporales bloqueados por Power BI
+~$*.pbix

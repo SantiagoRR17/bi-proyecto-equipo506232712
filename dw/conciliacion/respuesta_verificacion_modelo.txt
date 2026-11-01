@@ -1,0 +1,82 @@
+           tabla           |   tipo    |     llave_primaria      | llaves_foraneas 
+---------------------------+-----------+-------------------------+-----------------
+ dim_caracteristica_hurto  | Dimensión | sk_caracteristica       |               0
+ dim_localidad             | Dimensión | sk_localidad            |               0
+ dim_tiempo                | Dimensión | sk_tiempo               |               0
+ dim_tipo_alojamiento      | Dimensión | sk_tipo_alojamiento     |               0
+ dim_tipo_hurto            | Dimensión | sk_tipo_hurto           |               0
+ fact_alojamiento          | Hechos    | reg_rnt                 |               3
+ fact_dinamica_empresarial | Hechos    | sk_localidad, sk_tiempo |               2
+ fact_hurtos               | Hechos    | nro_fila_fuente         |               4
+(8 rows)
+
+         tabla_hechos         |     columna_fk      |   dimension_referenciada    |          restriccion          
+------------------------------+---------------------+-----------------------------+-------------------------------
+ dw.fact_dinamica_empresarial | sk_localidad        | dw.dim_localidad            | fk_fact_dinamica_localidad
+ dw.fact_dinamica_empresarial | sk_tiempo           | dw.dim_tiempo               | fk_fact_dinamica_tiempo
+ dw.fact_alojamiento          | sk_localidad        | dw.dim_localidad            | fk_fact_alojamiento_localidad
+ dw.fact_alojamiento          | sk_tiempo           | dw.dim_tiempo               | fk_fact_alojamiento_tiempo
+ dw.fact_alojamiento          | sk_tipo_alojamiento | dw.dim_tipo_alojamiento     | fk_fact_alojamiento_tipo
+ dw.fact_hurtos               | sk_caracteristica   | dw.dim_caracteristica_hurto | fk_fact_hurtos_caracteristica
+ dw.fact_hurtos               | sk_localidad        | dw.dim_localidad            | fk_fact_hurtos_localidad
+ dw.fact_hurtos               | sk_tiempo           | dw.dim_tiempo               | fk_fact_hurtos_tiempo
+ dw.fact_hurtos               | sk_tipo_hurto       | dw.dim_tipo_hurto           | fk_fact_hurtos_tipo
+(9 rows)
+
+           tabla           |            columna             |          tipo          | admite_nulos 
+---------------------------+--------------------------------+------------------------+--------------
+ dim_caracteristica_hurto  | sk_caracteristica              | integer                | NO
+ dim_caracteristica_hurto  | arma_medio                     | character varying(40)  | NO
+ dim_caracteristica_hurto  | genero                         | character varying(20)  | NO
+ dim_caracteristica_hurto  | grupo_etario                   | character varying(20)  | NO
+ dim_localidad             | sk_localidad                   | integer                | NO
+ dim_localidad             | cod_localidad                  | character(2)           | NO
+ dim_localidad             | nombre_localidad               | character varying(50)  | NO
+ dim_localidad             | acto_administrativo            | character varying(60)  | YES
+ dim_localidad             | area                           | numeric(15,2)          | YES
+ dim_tiempo                | sk_tiempo                      | integer                | NO
+ dim_tiempo                | fecha                          | date                   | NO
+ dim_tiempo                | dia                            | smallint               | NO
+ dim_tiempo                | mes                            | character varying(10)  | NO
+ dim_tiempo                | numero_mes                     | smallint               | NO
+ dim_tiempo                | trimestre                      | smallint               | NO
+ dim_tiempo                | anio                           | smallint               | NO
+ dim_tipo_alojamiento      | sk_tipo_alojamiento            | integer                | NO
+ dim_tipo_alojamiento      | cod_subcategoria               | character varying(10)  | NO
+ dim_tipo_alojamiento      | etiqueta                       | character varying(100) | YES
+ dim_tipo_hurto            | sk_tipo_hurto                  | integer                | NO
+ dim_tipo_hurto            | etiqueta_original              | character varying(100) | NO
+ dim_tipo_hurto            | articulo                       | character varying(30)  | NO
+ dim_tipo_hurto            | descripcion_tipo               | character varying(100) | NO
+ fact_alojamiento          | reg_rnt                        | integer                | NO
+ fact_alojamiento          | sk_localidad                   | integer                | NO
+ fact_alojamiento          | sk_tiempo                      | integer                | NO
+ fact_alojamiento          | sk_tipo_alojamiento            | integer                | NO
+ fact_alojamiento          | cantidad_alojamientos          | integer                | NO
+ fact_alojamiento          | participacion_pct              | numeric(7,4)           | YES
+ fact_dinamica_empresarial | sk_localidad                   | integer                | NO
+ fact_dinamica_empresarial | sk_tiempo                      | integer                | NO
+ fact_dinamica_empresarial | empresas_vigentes              | integer                | NO
+ fact_dinamica_empresarial | establecimientos_vigentes      | integer                | YES
+ fact_dinamica_empresarial | variacion_empresas_pct         | numeric(9,4)           | YES
+ fact_dinamica_empresarial | variacion_establecimientos_pct | numeric(9,4)           | YES
+ fact_hurtos               | nro_fila_fuente                | integer                | NO
+ fact_hurtos               | sk_tiempo                      | integer                | NO
+ fact_hurtos               | sk_localidad                   | integer                | NO
+ fact_hurtos               | sk_tipo_hurto                  | integer                | NO
+ fact_hurtos               | sk_caracteristica              | integer                | NO
+ fact_hurtos               | cantidad_reportada             | integer                | NO
+(41 rows)
+
+           tabla           | registros 
+---------------------------+-----------
+ dim_tiempo                |      6209
+ dim_localidad             |        21
+ dim_tipo_alojamiento      |         8
+ dim_tipo_hurto            |         3
+ dim_caracteristica_hurto  |        69
+ fact_dinamica_empresarial |        60
+ fact_alojamiento          |       839
+ fact_hurtos               |    176776
+(8 rows)
+
