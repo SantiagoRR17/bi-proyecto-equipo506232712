@@ -29,8 +29,8 @@ Carga completa del data warehouse `observatorio_bi` (esquema `dw`, ver `dw/ddl/`
 
 ## Configuración
 
-1. Copiar `kettle.properties.ejemplo` a `~/.kettle/kettle.properties` y completar `DB_*`, `RAIZ_REPO`, `ARCHIVO_HURTOS`, `FECHA_CORTE_TURISMO`. Ese archivo **no se sube** al repositorio.
-2. La copia versionada de F2 en `datos/raw/` contiene únicamente las filas de Bogotá, que son las que utiliza el ETL. Generar el CSV con localidad (una sola vez, desde la raíz del repo): `python etl/scripts/asignar_localidad.py`. Escribe `datos/procesado/Reporte_Hurto_por_Modalidades_con_LOCALIDAD.csv` (no se versiona: >50 MB; agregar `datos/procesado/` a `.gitignore`). `ARCHIVO_HURTOS` debe apuntar a ese archivo. Orden esperado: `DEPARTAMENTO, MUNICIPIO, CODIGO DANE, ARMAS MEDIOS, FECHA HECHO, GENERO, GRUPO ETARIO, TIPO DE HURTO, CANTIDAD, LOCALIDAD`. PDI lee este CSV por posición.
+1. Copiar `kettle.properties.ejemplo` a `~/.kettle/kettle.properties` y completar `DB_*`, `RAIZ_REPO`, `ARCHIVO_HURTOS`, `FECHA_CORTE_TURISMO`. Ese archivo **no se sube** al repositorio siguiendo las instrucciones de la entrega.
+2. La copia versionada de F2 en `datos/raw/` contiene únicamente las filas de Bogotá, que son las que utiliza el ETL. Generar el CSV con localidad (una sola vez, desde la raíz del repo): `python etl/scripts/asignar_localidad.py`. Escribe `datos/procesado/Reporte_Hurto_Bogota_con_LOCALIDAD.csv` (no se versiona: >50 MB; agregar `datos/procesado/` a `.gitignore`). `ARCHIVO_HURTOS` debe apuntar a ese archivo. Orden esperado: `DEPARTAMENTO, MUNICIPIO, CODIGO DANE, ARMAS MEDIOS, FECHA HECHO, GENERO, GRUPO ETARIO, TIPO DE HURTO, CANTIDAD, LOCALIDAD`. PDI lee este CSV por posición.
 
 ## Ejecución
 
@@ -58,10 +58,10 @@ Cada uno de los 15 problemas de la tabla 2.2 de la Entrega 1 tiene un paso con n
 
 ## Supuestos y límites (leer antes de ejecutar)
 
-1. **Estos archivos no se ejecutaron en PDI** (no había acceso al software). Se validaron: XML bien formado, integridad de pasos y campos entre pasos, el SQL contra PostgreSQL 16 con los datos reales y la lógica JavaScript con Node. Al abrirlos en Spoon pueden aparecer ajustes menores (p. ej., tipo de un campo); revisar con *Verify* (F11) antes del primer *Run*.
-2. **`LOCALIDAD` es un dato simulado**, como declara la Entrega 1 (asignada por el equipo con autorización del docente). El script reparte las 176.776 filas de Bogotá en partes iguales (8.839 a 16 localidades y 8.838 a 4; incluye Sumapaz), con semilla fija 506232712; las 476.608 filas de otros departamentos quedan vacías. Cualquier indicador de hurtos por localidad refleja ese reparto, no la realidad: decirlo en el informe y en el tablero. El ETL lee el CSV por posición (`LOCALIDAD` = columna 10).
-3. F3 se carga desde las capas de detalle agregadas por localidad, porque en el resumen de 2025 `EmpresasVigentes` es anómalo (p. ej. Usaquén 3.791 vs 38.307 en detalle). El resumen sirve para conciliar.
-4. `fact_alojamiento.sk_tiempo` usa `FECHA_CORTE_TURISMO` (por defecto 20261022).
-5. **Coordenadas de F1:** no se cargan (decisión del equipo: del alojamiento solo se usa la localidad). El modelo coincide con el diagrama de la Entrega 1. La Entrega 1 mencionaba reproyectar F1 a EPSG:4326; en la Entrega 2 se declara que no aplica porque no se guardan puntos. `P02` documenta esa exclusión.
-6. Las contraseñas no están en los archivos; usan `${DB_PASSWORD}`.
-7. **Conciliación:** `dw/conciliacion/` compara lo esperado (calculado directo de los archivos con Python) contra lo cargado en el DW. Se probó con una carga que aplica las mismas reglas del ETL en Python, no con PDI; la prueba real es ejecutar el job y luego `02_conciliar.sql`.
+
+1. **`LOCALIDAD` es un dato simulado**, como declara la Entrega 1 (asignada por el equipo con autorización del docente). El script reparte las 176.776 filas de Bogotá en partes iguales (8.839 a 16 localidades y 8.838 a 4; incluye Sumapaz), con semilla fija 506232712; las 476.608 filas de otros departamentos quedan vacías. Cualquier indicador de hurtos por localidad refleja ese reparto, no la realidad: decirlo en el informe y en el tablero. El ETL lee el CSV por posición (`LOCALIDAD` = columna 10).
+2. F3 se carga desde las capas de detalle agregadas por localidad, porque en el resumen de 2025 `EmpresasVigentes` es anómalo (p. ej. Usaquén 3.791 vs 38.307 en detalle). El resumen sirve para conciliar.
+3. `fact_alojamiento.sk_tiempo` usa `FECHA_CORTE_TURISMO` (por defecto 20261022).
+4. **Coordenadas de F1:** no se cargan (decisión del equipo: del alojamiento solo se usa la localidad). El modelo coincide con el diagrama de la Entrega 1. La Entrega 1 mencionaba reproyectar F1 a EPSG:4326; en la Entrega 2 se declara que no aplica porque no se guardan puntos. `P02` documenta esa exclusión.
+5. Las contraseñas no están en los archivos; usan `${DB_PASSWORD}`.
+6. **Conciliación:** `dw/conciliacion/` compara lo esperado (calculado directo de los archivos con Python) contra lo cargado en el DW. Se probó con una carga que aplica las mismas reglas del ETL en Python, no con PDI; la prueba real es ejecutar el job y luego `02_conciliar.sql`.
